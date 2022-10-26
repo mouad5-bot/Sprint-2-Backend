@@ -1,7 +1,7 @@
 <?php
     include('scripts.php');
 ?>
-
+	
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -337,7 +337,7 @@
 							<input type="hidden" id="task-id">
 							<div class="mb-3">
 								<label class="form-label">Title</label>
-								<input type="text" class="form-control" id="task-title"/>
+								<input  type="text" class="form-control"  id="task-title" />
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Type</label>
@@ -355,7 +355,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Priority</label>
-								<select class="form-select" id="task-priority">
+								<select class="form-select"  id="task-priority">
 									<option value="">Please select</option>
 									<option value="Low">Low</option>
 									<option value="Medium">Medium</option>
@@ -384,9 +384,9 @@
 					</div>
 					<div class="modal-footer">
 						<a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-						<button type="submit" name="delete" class="btn btn-danger task-action-btn" id="task-delete-btn">Delete</a>
+						<button type="submit" name="delete" class="btn btn-danger task-action-btn"  id="task-delete-btn">Delete</a>
 						<button type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
-						<button type="submit" name="save" class="btn btn-primary task-action-btn" id="task-save-btn">Save</button>
+						<button type="submit" name="save"   class="btn btn-primary task-action-btn" id="task-save-btn">Save</button>
 					</div>
 				</form>
 			</div>
