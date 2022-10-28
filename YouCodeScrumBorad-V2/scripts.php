@@ -5,7 +5,7 @@
     session_start();
 
     //ROUTING
-    if(isset($_POST['save']))        saveTask();
+    // if(isset($_POST['save']))        saveTask();
     if(isset($_POST['update']))      updateTask();
     if(isset($_POST['delete']))      deleteTask();
     
@@ -18,22 +18,28 @@
     }
 
 
-    function saveTask()
+//   function saveTask()
+if(isset($_POST['save']))
     {
         //CODE HERE 
-        $Title         = $_POST['task_title'];
-        $Type_id       = $_POST['task_type'];
-        $Priority_id   = $_POST['task_priority'];
-        $Status_id     = $_POST['task_status'];
-        $task_datetime = $_POST['task_date'];            
-        $Description   = $_POST['task_description'];
+        $task_title       = $_POST['task_title'];
+        $task_type        = $_POST['task_type'];
+        $task_priority    = $_POST['task_priority'];
+        $task_status      = $_POST['task_status'];
+        $task_date        = $_POST['task_date'];
+        $task_description = $_POST['task_description'];
 
         //SQL INSERT
-        $sql = "insert into `tasks` (Title, Type_id, Priority_id, Status_id, task_datetime, Description)
-               value('$task_title', $task_type', $task_priority', $task_status', $task_date', $task_description')";
-        
+
+        $req = "INSERT INTO tasks ( task_title, task_type, task_priority, task_status, task_date, task_description)
+        VALUES(  '$task_title', '$task_type', '$task_priority', '$task_status', '$task_date', '$task_description')";
+    
+        $data = mysqli_query($connection,$req);
+
         $_SESSION['message'] = "Task has been added successfully !";
 		header('location: index.php');
+ 
+        mysqli_close($connection);  
     }
 
     function updateTask()

@@ -2,14 +2,15 @@
     $servername = "localhost";
     $username   = "root";
     $password   = "";
-    $DBname   = "youcodeboard";
+    $DBname     = "youcodeboard";
 
     //CONNECT TO MYSQL DATABASE USING MYSQLI    
-    $conn = mysqli_connect($servername, $username, $password, $DBname);
+    $connection = mysqli_connect($servername, $username, $password, $DBname);
 
     // Check connection
-    if (!$conn) {
+    if (!$connection   ) {
     die("Connection failed: " . mysqli_connect_error());
-    }   
+    } 
+    
     
 ?>
