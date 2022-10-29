@@ -5,7 +5,7 @@
     $DBname     = "youcodeboard";
 
     //CONNECT TO MYSQL DATABASE USING MYSQLI    
-    $connection = mysqli_connect($servername, $username, $password, $DBname);
+    $GLOBALS['connection'] = mysqli_connect($servername, $username, $password, $DBname);
 
     // Check connection
     if (!$connection   ) {

@@ -42,14 +42,7 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`id`, `task_title`, `task_type`, `task_priority`, `task_status`, `task_date`, `task_description`) VALUES
-(1, '', '', '', '', '0000-00-00 00:00:00', ''),
-(2, '', '', '', '', '0000-00-00 00:00:00', ''),
-(9, '', '', '', '', '0000-00-00 00:00:00', ''),
-(10, '', '', '', '', '0000-00-00 00:00:00', ''),
-(11, 'aa', 'Feature', 'High', '', '0000-00-00 00:00:00', ''),
-(12, 'aa', 'Feature', 'Low', 'Done', '2022-10-28 14:57:00', 'dddd'),
-(13, 'ek', 'Feature', 'High', 'To Do', '2022-10-28 15:02:00', 'rrrrrr'),
-(14, 'aaaaaaaaaaaaa', 'Feature', 'Low', 'In Progress', '2022-10-28 15:14:00', 'azaza');
+(1, 'aaaaaaaaaaaaa', 'Feature', 'Low', 'In Progress', '2022-10-28 15:14:00', 'azaza');
 
 --
 -- Index pour les tables déchargées

@@ -268,6 +268,30 @@
 							<?php
 								//PHP CODE HERE
 								//DATA FROM getTasks() FUNCTION
+								foreach($GLOBALS['userStories'] as $row)
+								{
+									if($row['task_status'] === "To Do")
+									{
+							?>
+									<button onclick="editTask(`+index+`)" class="list-group-item list-group-item-action d-flex">
+										<div class="me-3 fs-16px">
+											<i class="`+current_task_icon+` text-green fa-fw"></i> 
+										</div>
+										<div class="flex-fill">
+											<div class="fs-14px lh-12 mb-2px fw-bold text-dark"><?=$row['task_title']?></div>
+											<div class="mb-1 fs-12px">
+												<div class="text-gray-600 flex-1">#<?=$row['id']?> created in <?=$row['task_date']?></div>
+												<div class="text-gray-900 flex-1" title="`+tasks[index].description+`"><?=$row['task_description']?></div>
+											</div>
+											<div class="mb-1">
+												<span class="badge bg-primary"><?=$row['task_type']?></span>
+												<span class="badge bg-gray-300 text-gray-900"><?=$row['task_priority']?></span>
+											</div>
+										</div>
+									</button>
+							<?php
+									}
+								}
 							?>
 						</div>
 					</div>
@@ -288,6 +312,32 @@
 							<?php
 								//PHP CODE HERE
 								//DATA FROM getTasks() FUNCTION
+								foreach($GLOBALS['userStories'] as $row)
+								{
+									if($row['task_status'] === "In Progress")
+									{
+							?>
+									<button onclick="editTask(`+index+`)" class="list-group-item list-group-item-action d-flex">
+										<div class="me-3 fs-16px">
+											<i class="`+current_task_icon+` text-green fa-fw"></i> 
+										</div>
+										<div class="flex-fill">
+											<div class="fs-14px lh-12 mb-2px fw-bold text-dark"><?=$row['task_title']?></div>
+											<div class="mb-1 fs-12px">
+												<div class="text-gray-600 flex-1">#<?=$row['id']?> created in <?=$row['task_date']?></div>
+												<div class="text-gray-900 flex-1" title="`+tasks[index].description+`"><?=$row['task_description']?></div>
+											</div>
+											<div class="mb-1">
+												<span class="badge bg-primary"><?=$row['task_type']?></span>
+												<span class="badge bg-gray-300 text-gray-900"><?=$row['task_priority']?></span>
+											</div>
+										</div>
+									</button>
+			
+							<?php
+									}
+
+								}
 							?>
 						</div>
 					</div>
@@ -308,6 +358,32 @@
 							<?php
 								//PHP CODE HERE
 								//DATA FROM getTasks() FUNCTION
+								foreach($GLOBALS['userStories'] as $row)
+								{
+									if($row['task_status'] === "Done")
+									{
+							?>
+										<button onclick="editTask(`+index+`)" class="list-group-item list-group-item-action d-flex">
+										<div class="me-3 fs-16px">
+											<i class="`+current_task_icon+` text-green fa-fw"></i> 
+										</div>
+										<div class="flex-fill">
+											<div class="fs-14px lh-12 mb-2px fw-bold text-dark"><?=$row['task_title']?></div>
+											<div class="mb-1 fs-12px">          
+												<div class="text-gray-600 flex-1">#<?=$row['id']?> created in   <?=$row['task_date']?>   </div>
+												<div class="text-gray-900 flex-1" title="`+tasks[index].description+`">  <?=$row['task_description']?> </div>
+											</div>
+											<div class="mb-1">
+												<span class="badge bg-primary"><?=$row['task_type']?></span>
+												<span class="badge bg-gray-300 text-gray-900"><?=$row['task_priority']?></span>
+											</div>
+										</div>
+									</button>	
+
+							<?php
+									}
+
+								}
 							?>
 						</div>
 					</div>
