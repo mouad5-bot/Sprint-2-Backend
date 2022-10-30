@@ -12,6 +12,7 @@
 	<meta content="" name="author" />
 	
 	<!-- ================== BEGIN core-css ================== -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 	<link href="assets/css/vendor.min.css" rel="stylesheet" />
 	<link href="assets/css/default/app.min.css" rel="stylesheet" />
@@ -273,22 +274,22 @@
 									if($row['task_status'] === "To Do")
 									{
 							?>
-									<button onclick="editTask(`+index+`)" class="list-group-item list-group-item-action d-flex">
+									<a href="index.php?id=<?=$row['id']?>" class="list-group-item list-group-item-action d-flex">
 										<div class="me-3 fs-16px">
-											<i class="`+current_task_icon+` text-green fa-fw"></i> 
+											<i class="bi bi-question-circle"></i> 
 										</div>
 										<div class="flex-fill">
 											<div class="fs-14px lh-12 mb-2px fw-bold text-dark"><?=$row['task_title']?></div>
 											<div class="mb-1 fs-12px">
-												<div class="text-gray-600 flex-1">#<?=$row['id']?> created in <?=$row['task_date']?></div>
-												<div class="text-gray-900 flex-1" title="`+tasks[index].description+`"><?=$row['task_description']?></div>
+												<div class="text-gray-600 flex-1">#<?=$row['id']?> created in <?=$row['task_date']?></div>     
+												<div class="text-gray-900 flex-1" title="<?=$row['task_description']?>">  <?php echo substr($row['task_description'],0,60); ?> ... </div>
 											</div>
 											<div class="mb-1">
 												<span class="badge bg-primary"><?=$row['task_type']?></span>
 												<span class="badge bg-gray-300 text-gray-900"><?=$row['task_priority']?></span>
 											</div>
 										</div>
-									</button>
+									</a>
 							<?php
 									}
 								}
@@ -317,22 +318,22 @@
 									if($row['task_status'] === "In Progress")
 									{
 							?>
-									<button onclick="editTask(`+index+`)" class="list-group-item list-group-item-action d-flex">
+									<a href="index.php?id=<?=$row['id']?>" class="list-group-item list-group-item-action d-flex">
 										<div class="me-3 fs-16px">
-											<i class="`+current_task_icon+` text-green fa-fw"></i> 
+											<i class="bi bi-arrow-clockwise"></i> 
 										</div>
 										<div class="flex-fill">
 											<div class="fs-14px lh-12 mb-2px fw-bold text-dark"><?=$row['task_title']?></div>
 											<div class="mb-1 fs-12px">
 												<div class="text-gray-600 flex-1">#<?=$row['id']?> created in <?=$row['task_date']?></div>
-												<div class="text-gray-900 flex-1" title="`+tasks[index].description+`"><?=$row['task_description']?></div>
+												<div class="text-gray-900 flex-1" title="<?=$row['task_description']?>">  <?php echo substr($row['task_description'],0,60); ?> ... </div>
 											</div>
 											<div class="mb-1">
 												<span class="badge bg-primary"><?=$row['task_type']?></span>
 												<span class="badge bg-gray-300 text-gray-900"><?=$row['task_priority']?></span>
 											</div>
 										</div>
-									</button>
+									</a>
 			
 							<?php
 									}
@@ -363,27 +364,26 @@
 									if($row['task_status'] === "Done")
 									{
 							?>
-										<button onclick="editTask(`+index+`)" class="list-group-item list-group-item-action d-flex">
+										<a href="index.php?id=<?=$row['id']?>" class="list-group-item list-group-item-action d-flex">
 										<div class="me-3 fs-16px">
-											<i class="`+current_task_icon+` text-green fa-fw"></i> 
+											<i class="bi bi-check-circle"></i> 
 										</div>
 										<div class="flex-fill">
 											<div class="fs-14px lh-12 mb-2px fw-bold text-dark"><?=$row['task_title']?></div>
 											<div class="mb-1 fs-12px">          
 												<div class="text-gray-600 flex-1">#<?=$row['id']?> created in   <?=$row['task_date']?>   </div>
-												<div class="text-gray-900 flex-1" title="`+tasks[index].description+`">  <?=$row['task_description']?> </div>
+												<div class="text-gray-900 flex-1" title="<?=$row['task_description']?>"> <?php echo substr($row['task_description'],0,60); ?> ... </div>
 											</div>
 											<div class="mb-1">
 												<span class="badge bg-primary"><?=$row['task_type']?></span>
 												<span class="badge bg-gray-300 text-gray-900"><?=$row['task_priority']?></span>
 											</div>
 										</div>
-									</button>	
-
+									</a>
 							<?php
 									}
 
-								}
+								}	
 							?>
 						</div>
 					</div>

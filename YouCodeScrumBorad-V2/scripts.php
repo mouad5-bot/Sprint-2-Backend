@@ -61,7 +61,11 @@
     function deleteTask()
     {
         //CODE HERE
+        $id = (int)$_GET['id']; //cating int because all the variables that get in url is float
         //SQL DELETE
+        $sql = "DELETE  FROM tasks WHERE id='$id'";
+        $query = mysqli_query($GLOBALS['connection'] ,$sql);
+
         $_SESSION['message'] = "Task has been deleted successfully !";
 		header('location: index.php');
     }
