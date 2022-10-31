@@ -6,7 +6,7 @@
 
     //ROUTING
     if(isset($_POST['save']))        saveTask();
-    if(isset($_POST['update']))      updateTask();
+    //if(isset($_POST['update']))      updateTask();
     //if(isset($_POST['delete']))      deleteTask();
     
     getTasks();
@@ -49,16 +49,4 @@
  
         mysqli_close($connection);  
     }
-
-    function updateTask()
-    {
-        //CODE HERE
-        //SQL UPDATE
-        $_SESSION['message'] = "Task has been updated successfully !";
-		header('location: index.php');
-    }
-
-    //function deleteTask()
-  
-
 ?>

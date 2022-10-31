@@ -1,13 +1,15 @@
-<?php 
-    include('database.php');
-    ?>    
+<?php
+   //INCLUDE DATABASE FILE
+   include('database.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <title>Document</title>
 	<!-- ================== BEGIN core-css ================== -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -15,13 +17,12 @@
 	<link href="assets/css/default/app.min.css" rel="stylesheet" />
 	<!-- ================== END core-css ================== -->
 </head>
-<body>
-	<?php foreach($GLOBALS['userStories'] as $row)
-	{
-	?>	
+<body>  
+	
+
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="" method="POST" id="form-task">
+				<form action="scripts.php" method="POST" id="form-task">
 					<div class="modal-header">
 						<h5 class="modal-title">Add Task</h5>
 						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
@@ -49,7 +50,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Priority</label>
-								<select class="form-select"   name="task_priority" id="task-priority">
+								<select class="form-select"   name="" id="task-priority">
 									<option value="">Please select</option>
 									<option value="Low">Low</option>
 									<option value="Medium">Medium</option>
@@ -77,38 +78,35 @@
 						
 					</div>
 					<div class="modal-footer">
-						<a href="index.php" type="submit" 	name="cancel" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-						<button type="submit" name="delete" class="btn btn-danger task-action-btn"  id="task-delete-btn">Delete</button>
-						<a href="update.php?id=<?=$row['id']?>" type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
+						<a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
+						<button  type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
 					</div>
 				</form>
-            </div>
-        </div>
-        
-<?php }} ?>
-    <?php
-        if(isset($_POST['delete'])) { 
-            //CODE HERE
-            $id = (int)$_GET['id']; //casting int because all the variables that get in url is string
-            
-			//SQL DELETE
-            $sql = "DELETE  FROM tasks WHERE id=$id";
-            $query = mysqli_query($GLOBALS['connection'] ,$sql);
+			</div>
+		</div>
 
-            $_SESSION['message'] = "Task has been deleted successfully !";
-            header('location: index.php');
-        }
-    ?>    
+<?php
+//CODE HERE	
+   $id = $_GET['id'];    
+    if(isset($_POST['update'])) {
 
+        $task_title       = $_POST['task_title'];
+        $task_type        = $_POST['task_type'];
+        $task_priority    = $_POST['task_priority'];
+        $task_status      = $_POST['task_status'];
+        $task_date        = $_POST['task_date'];
+        $task_description = $_POST['task_description'];
+        //SQL UPDATE
+        $sql = "UPDATE tasks SET id='[value-1]',task_title='[value-2]',task_type='[value-3]',
+        task_priority='[value-4]',task_status='[value-5]',task_date='[value-6]',
+        task_description='[value-7]' WHERE id = $id";
 
-    	<!-- ================== BEGIN core-js ================== -->
-	<script src="assets/js/vendor.min.js"></script>
-	<script src="assets/js/app.min.js"></script>
-	<!-- ================== END core-js ================== -->
-	<script src="scripts.js"></script>
+        $data = mysqli_query($GLOBALS['connection'] ,$sql);
 
-	<script>
-		//reloadTasks();
-	</script>   
+        $_SESSION['message'] = "Task has been updated successfully !";
+        header('location: index.php');
+    }
+?>    
+
 </body>
 </html>
