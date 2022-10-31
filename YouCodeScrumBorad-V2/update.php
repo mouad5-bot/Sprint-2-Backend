@@ -18,11 +18,10 @@
 	<!-- ================== END core-css ================== -->
 </head>
 <body>  
-	
 
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="scripts.php" method="POST" id="form-task">
+				<form action="" method="POST" id="form-task">
 					<div class="modal-header">
 						<h5 class="modal-title">Add Task</h5>
 						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
@@ -50,7 +49,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Priority</label>
-								<select class="form-select"   name="" id="task-priority">
+								<select class="form-select"   name="task_priority" id="task-priority">
 									<option value="">Please select</option>
 									<option value="Low">Low</option>
 									<option value="Medium">Medium</option>
@@ -89,7 +88,8 @@
 //CODE HERE	
    $id = $_GET['id'];    
     if(isset($_POST['update'])) {
-
+        print_r($_POST);
+        die;
         $task_title       = $_POST['task_title'];
         $task_type        = $_POST['task_type'];
         $task_priority    = $_POST['task_priority'];
@@ -97,12 +97,12 @@
         $task_date        = $_POST['task_date'];
         $task_description = $_POST['task_description'];
         //SQL UPDATE
-        $sql = "UPDATE tasks SET id='[value-1]',task_title='[value-2]',task_type='[value-3]',
-        task_priority='[value-4]',task_status='[value-5]',task_date='[value-6]',
-        task_description='[value-7]' WHERE id = $id";
+        $sql = "UPDATE tasks SET task_title='$task_title',task_type='$task_type',
+        task_priority='$task_priority',task_status='$task_status',task_date='$task_date',
+        task_description='$task_description' WHERE id = $id";
 
         $data = mysqli_query($GLOBALS['connection'] ,$sql);
-
+die;
         $_SESSION['message'] = "Task has been updated successfully !";
         header('location: index.php');
     }

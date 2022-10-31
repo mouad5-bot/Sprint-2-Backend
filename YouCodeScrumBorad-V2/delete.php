@@ -16,9 +16,6 @@
 	<!-- ================== END core-css ================== -->
 </head>
 <body>
-	<?php foreach($GLOBALS['userStories'] as $row)
-	{
-	?>	
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="" method="POST" id="form-task">
@@ -79,13 +76,11 @@
 					<div class="modal-footer">
 						<a href="index.php" type="submit" 	name="cancel" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
 						<button type="submit" name="delete" class="btn btn-danger task-action-btn"  id="task-delete-btn">Delete</button>
-						<a href="update.php?id=<?=$row['id']?>" type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
+						<a href="update.php?id=<?=$_GET['id']?>" type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
 					</div>
 				</form>
             </div>
         </div>
-        
-<?php }} ?>
     <?php
         if(isset($_POST['delete'])) { 
             //CODE HERE
