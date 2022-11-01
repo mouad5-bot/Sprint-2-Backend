@@ -431,7 +431,7 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Priority</label>
-								<select class="form-select"   name="" id="task-priority">
+								<select class="form-select"  name="task_priority" id="task-priority">
 									<option value="">Please select</option>
 									<option value="Low">Low</option>
 									<option value="Medium">Medium</option>

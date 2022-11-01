@@ -36,7 +36,6 @@
         $task_status      = $_POST['task_status'];
         $task_date        = $_POST['task_date'];
         $task_description = $_POST['task_description'];
-
         //SQL INSERT
 
         $req = "INSERT INTO tasks ( task_title, task_type, task_priority, task_status, task_date, task_description)
