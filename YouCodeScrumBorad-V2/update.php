@@ -79,34 +79,67 @@
 					<div class="modal-footer">
 						<a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
 						<button  type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
+						<button  type="submit" name="delete" class="btn btn-danger task-action-btn"  id="task-delete-btn">Delete</button>
+						
 					</div>
 				</form>
 			</div>
 		</div>
 
-<?php
-//CODE HERE	
-   $id = $_GET['id'];    
-    if(isset($_POST['update'])) {
-        print_r($_POST);
-        die;
-        $task_title       = $_POST['task_title'];
-        $task_type        = $_POST['task_type'];
-        $task_priority    = $_POST['task_priority'];
-        $task_status      = $_POST['task_status'];
-        $task_date        = $_POST['task_date'];
-        $task_description = $_POST['task_description'];
-        //SQL UPDATE
-        $sql = "UPDATE tasks SET task_title='$task_title',task_type='$task_type',
-        task_priority='$task_priority',task_status='$task_status',task_date='$task_date',
-        task_description='$task_description' WHERE id = $id";
+		<!-- ======================== update ========================= -->
+	<?php
+		//CODE HERE	
+		$id = $_GET['id'];    
+		if(isset($_POST['update'])) {
+			//print_r($_POST);
+			//die;
+			$task_title       = $_POST['task_title'];
+			@$task_type       = $_POST['task_type'];
+			$task_priority    = $_POST['task_priority'];
+			$task_status      = $_POST['task_status'];
+			$task_date        = $_POST['task_date'];
+			$task_description = $_POST['task_description'];
+			//SQL UPDATE
+			$sql = "UPDATE tasks SET task_title='$task_title', task_type='$task_type',
+			task_priority='$task_priority', task_status='$task_status', task_date='$task_date',
+			task_description='$task_description' WHERE id = $id";
 
-        $data = mysqli_query($GLOBALS['connection'] ,$sql);
-die;
-        $_SESSION['message'] = "Task has been updated successfully !";
-        header('location: index.php');
-    }
-?>    
+			$data = mysqli_query($GLOBALS['connection'] ,$sql);
+
+			if (mysqli_query($GLOBALS['connection'], $sql)) {
+				echo "";
+			}else{
+				echo "Error updating record: " . mysqli_error($GLOBALS['connection']);
+			}
+
+			$_SESSION['message'] = "Task has been updated successfully !";
+			header('location: index.php');
+		}
+	?>   
+
+	<!-- ============================ delete ========================== -->
+
+    <?php
+        if(isset($_POST['delete'])) { 
+            //CODE HERE
+            $id = (int)$_GET['id']; //casting int because all the variables that get in url is string
+            
+			//SQL DELETE
+            $sql = "DELETE  FROM tasks WHERE id=$id";
+            $query = mysqli_query($GLOBALS['connection'] ,$sql);
+
+            $_SESSION['message'] = "Task has been deleted successfully !";
+            header('location: index.php');
+        }
+    ?> 	
+<!-- ================== BEGIN core-js ================== -->
+<script src="assets/js/vendor.min.js"></script>
+<script src="assets/js/app.min.js"></script>
+<!-- ================== END core-js ================== -->
+<script src="scripts.js"></script>
+<script>
+	//reloadTasks();
+</script> 
 
 </body>
 </html>

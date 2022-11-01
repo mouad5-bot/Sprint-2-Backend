@@ -274,7 +274,7 @@
 									if($row['task_status'] === "To Do")
 									{
 							?>
-									<a href="delete.php?id=<?=$row['id']?>" class="list-group-item list-group-item-action d-flex">
+									<a href="update.php?id=<?=$row['id']?>" class="list-group-item list-group-item-action d-flex">
 										<div class="me-3 fs-16px">
 											<i class="bi bi-question-circle"></i> 
 										</div>
@@ -318,7 +318,7 @@
 									if($row['task_status'] === "In Progress")
 									{
 							?>
-									<a href="delete.php?id=<?=$row['id']?>" class="list-group-item list-group-item-action d-flex">
+									<a href="update.php?id=<?=$row['id']?>" class="list-group-item list-group-item-action d-flex">
 										<div class="me-3 fs-16px">
 											<i class="bi bi-arrow-clockwise"></i> 
 										</div>
@@ -364,7 +364,7 @@
 									if($row['task_status'] === "Done")
 									{
 							?>
-									<a href="delete.php?id=<?=$row['id']?>" class="list-group-item list-group-item-action d-flex">
+									<a href="update.php?id=<?=$row['id']?>" class="list-group-item list-group-item-action d-flex">
 										<div class="me-3 fs-16px">
 											<i class="bi bi-check-circle"></i> 
 										</div>
