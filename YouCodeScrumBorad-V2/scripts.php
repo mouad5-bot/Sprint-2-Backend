@@ -14,7 +14,10 @@
     {
         //CODE HERE
         //SQL SELECT   
-        $requet = "SELECT * FROM `tasks`";
+        $requet = "SELECT * FROM `tasks`
+        INNER JOIN types on  tasks.type_id = types.id
+        INNER JOIN types on  tasks.priority_id = priorities.id;
+        WHERE  status_id = $status";
 
         $resultat = mysqli_query($GLOBALS['connection'],$requet);
         $GLOBALS['userStories'] = array();  //declaration a global array
@@ -27,7 +30,7 @@
         echo "Fetch all tasks";
     }
 
-    function saveTask()
+    function saveTask() 
     {
         //CODE HERE 
         $task_title       = $_POST['task_title'];
@@ -38,7 +41,7 @@
         $task_description = $_POST['task_description'];
         //SQL INSERT
 
-        $req = "INSERT INTO tasks ( task_title, task_type, task_priority, task_status, task_date, task_description)
+        $req = "INSERT INTO tasks ( task_title, type_id, priority_id, status_id , task_date, task_description)
         VALUES(  '$task_title', '$task_type', '$task_priority', '$task_status', '$task_date', '$task_description')";
     
         $data = mysqli_query($GLOBALS['connection'] ,$req);
@@ -46,6 +49,6 @@
         $_SESSION['message'] = "Task has been added successfully !";
 		header('location: index.php');
  
-        mysqli_close($connection);  
+        mysqli_close($GLOBALS['connection']);  
     }
 ?>

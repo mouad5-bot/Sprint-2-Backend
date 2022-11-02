@@ -83,7 +83,7 @@ print_r($ligne);
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Date</label>
-								<input type="datetime-local" class="form-control" name="task_date" id="task-date" value="<?php echo $task_date; ?>"/>
+								<input type="datetime-local" class="form-control" name="task_date" id="task-date" value=	"<?php echo $task_date; ?>"/>
 							</div>
 							<div class="mb-0">
 								<label class="form-label">Description</label>
@@ -153,7 +153,7 @@ print_r($ligne);
 	<script>
 		//reloadTasks();
 		<?php 
-			if($task_type === "Feature"){
+			if($task_type == "Feature"){
 				?>
 				document.getElementById('task-type-feature').checked=true;
 			<?php }else{?>

@@ -315,7 +315,7 @@
 								//DATA FROM getTasks() FUNCTION
 								foreach($GLOBALS['userStories'] as $row)
 								{
-									if($row['task_status'] === "In Progress")
+									if($row['status_id '] === "In Progress")
 									{
 							?>
 									<a href="update.php?id=<?=$row['id']?>" class="list-group-item list-group-item-action d-flex">
