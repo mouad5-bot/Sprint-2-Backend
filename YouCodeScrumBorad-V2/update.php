@@ -6,14 +6,20 @@
 <?php
 $id = $_GET['id'];
 
-$sql="SELECT * FROM `tasks` WHERE id = $id";  
+$sql="SELECT tasks.id, tasks.task_title, statuses.name as task_status, 
+types.name as task_type, priorities.name as task_priority,  tasks.task_date,
+tasks.task_description
+FROM `tasks`
+INNER JOIN types on  tasks.type_id = types.id
+INNER JOIN priorities on  tasks.priority_id = priorities.id
+INNER JOIN statuses on  tasks.status_id = statuses.id  WHERE tasks.id = $id";  
 $result = mysqli_query($GLOBALS['connection'] ,$sql);
 $ligne = mysqli_fetch_assoc($result);
-print_r($ligne);
+
 	$task_title 	  = $ligne['task_title'];
-	$task_type		  = $ligne['task_type'];
-	$task_priority	  = $ligne['task_priority'];
-	$task_status	  = $ligne['task_status'];
+	$task_type		  = (int)$ligne['task_type'];
+	$task_priority	  = (int)$ligne['task_priority'];
+	$task_status	  = (int)$ligne['task_status'];
 	$task_date 		  = $ligne['task_date'];
 	$task_description = $ligne['task_description'];
 ?>
@@ -52,11 +58,11 @@ print_r($ligne);
 								<label class="form-label">Type</label>
 								<div class="ms-3">
 									<div class="form-check mb-1">
-										<input class="form-check-input" name="task_type" type="radio" value="Feature" id="task-type-feature"/>
+										<input class="form-check-input" name="task_type" type="radio" value="1" id="task-type-feature"/>
 										<label class="form-check-label" for="task-type-feature">Feature</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" name="task_type" type="radio" value="Bug"  id="task-type-bug"/>
+										<input class="form-check-input" name="task_type" type="radio" value="2"  id="task-type-bug"/>
 										<label class="form-check-label" for="task-type-bug">Bug</label>
 									</div>
 								</div>
@@ -66,19 +72,19 @@ print_r($ligne);
 								<label class="form-label">Priority</label>
 								<select class="form-select"   name="task_priority" id="task-priority" >
 									<option value="">Please select</option>
-									<option value="Low">Low</option>
-									<option value="Medium">Medium</option>
-									<option value="High">High</option>
-									<option value="Critical">Critical</option>
+									<option value="1">Low</option>
+									<option value="2">Medium</option>
+									<option value="3">High</option>
+									<option value="4">Critical</option>
 								</select>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Status</label>
 								<select class="form-select" name="task_status" id="task-status">
 									<option value="">Please select</option>
-									<option value="To Do">To Do</option>
-									<option value="In Progress">In Progress</option>
-									<option value="Done">Done</option>
+									<option value="1">To Do</option>
+									<option value="2">In Progress</option>
+									<option value="3">Done</option>
 								</select>
 							</div>
 							<div class="mb-3">
@@ -104,24 +110,20 @@ print_r($ligne);
 		//CODE HERE	
 		$id = $_GET['id'];
 		if(isset($_POST['update'])) {
-			//print_r($_POST);
-			//die;
 			$task_title       = $_POST['task_title'];
-			$task_type        = $_POST['task_type'];
-			$task_priority    = $_POST['task_priority'];
-			$task_status      = $_POST['task_status'];
+			$task_type        = (int)$_POST['task_type'];
+			$task_priority    = (int)$_POST['task_priority'];
+			$task_status      = (int)$_POST['task_status'];
 			$task_date        = $_POST['task_date'];
 			$task_description = $_POST['task_description'];
 			//SQL UPDATE
-			$sql = "UPDATE tasks SET task_title='$task_title', task_type='$task_type',
-			task_priority='$task_priority', task_status='$task_status', task_date='$task_date',
+			$sql = "UPDATE tasks SET task_title='$task_title', type_id=$task_type,
+			priority_id=$task_priority, status_id=$task_status, task_date='$task_date',
 			task_description='$task_description' WHERE id = $id";
 
 			$data = mysqli_query($GLOBALS['connection'] ,$sql);
 
-			if (mysqli_query($GLOBALS['connection'], $sql)) {
-				echo "";
-			}else{
+			if (!$data) {
 				echo "Error updating record: " . mysqli_error($GLOBALS['connection']);
 			}
 
@@ -160,7 +162,7 @@ print_r($ligne);
 				document.getElementById('task-type-bug').checked=true;
 		<?php }?>
 
-			document.getElementById("task-priority").value = <?= $task_priority?>;
+			document.getElementById("task-priority").value =" <?=$ligne['task_priority']?>";
 		
 	</script> 	
 

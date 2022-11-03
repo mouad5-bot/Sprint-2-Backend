@@ -269,10 +269,11 @@
 							<?php
 								//PHP CODE HERE
 								//DATA FROM getTasks() FUNCTION
+								
 								foreach($GLOBALS['userStories'] as $row)
 								{
-									if($row['task_status'] === "To Do")
-									{
+								if($row['task_status'] === "To Do")
+									{ 
 							?>
 									<a href="update.php?id=<?=$row['id']?>" class="list-group-item list-group-item-action d-flex">
 										<div class="me-3 fs-16px">
@@ -315,7 +316,7 @@
 								//DATA FROM getTasks() FUNCTION
 								foreach($GLOBALS['userStories'] as $row)
 								{
-									if($row['status_id '] === "In Progress")
+									if($row['task_status'] === "In Progress")
 									{
 							?>
 									<a href="update.php?id=<?=$row['id']?>" class="list-group-item list-group-item-action d-flex">
@@ -419,11 +420,11 @@
 								<label class="form-label">Type</label>
 								<div class="ms-3">
 									<div class="form-check mb-1">
-										<input class="form-check-input" name="task_type" type="radio" value="Feature" id="task-type-feature"/>
+										<input class="form-check-input" name="task_type" type="radio" value="1" id="task-type-feature"/>
 										<label class="form-check-label" for="task-type-feature">Feature</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" name="task_type" type="radio" value="Bug" id="task-type-bug"/>
+										<input class="form-check-input" name="task_type" type="radio" value="2" id="task-type-bug"/>
 										<label class="form-check-label" for="task-type-bug">Bug</label>
 									</div>
 								</div>
@@ -433,19 +434,19 @@
 								<label class="form-label">Priority</label>
 								<select class="form-select"  name="task_priority" id="task-priority">
 									<option value="">Please select</option>
-									<option value="Low">Low</option>
-									<option value="Medium">Medium</option>
-									<option value="High">High</option>
-									<option value="Critical">Critical</option>
+									<option value="1">Low</option>
+									<option value="2">Medium</option>
+									<option value="3">High</option>
+									<option value="4">Critical</option>
 								</select>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Status</label>
 								<select class="form-select" name="task_status" id="task-status">
 									<option value="">Please select</option>
-									<option value="To Do">To Do</option>
-									<option value="In Progress">In Progress</option>
-									<option value="Done">Done</option>
+									<option value="1">To Do</option>
+									<option value="2">In Progress</option>
+									<option value="3">Done</option>
 								</select>
 							</div>
 							<div class="mb-3">
