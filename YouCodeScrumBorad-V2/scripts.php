@@ -37,9 +37,9 @@
     {
         //CODE HERE 
         $task_title       = $_POST['task_title'];
-        $task_type        =(int)$_POST['task_type'];
-        $task_priority    =(int)$_POST['task_priority'];
-        $task_status      =(int)$_POST['task_status'];
+        $task_type        = $_POST['task_type'];
+        $task_priority    = $_POST['task_priority'];
+        $task_status      = $_POST['task_status'];
         $task_date        = $_POST['task_date'];
         $task_description = $_POST['task_description'];
         //SQL INSERT
@@ -55,7 +55,10 @@
         mysqli_close($GLOBALS['connection']);  
     }
 
-    // function count($status) {
-
-    // }
+    function task_count($id) {
+        $req = "SELECT count(id) as numberOf FROM tasks WHERE status_id = $id";
+        $res = mysqli_query($GLOBALS['connection'], $req);
+        $data=mysqli_fetch_assoc($res);
+        echo $data['numberOf'];
+    }
 ?>

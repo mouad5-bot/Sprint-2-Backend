@@ -58,11 +58,13 @@ $ligne = mysqli_fetch_assoc($result);
 								<label class="form-label">Type</label>
 								<div class="ms-3">
 									<div class="form-check mb-1">
-										<input class="form-check-input" name="task_type" type="radio" value="1" id="task-type-feature"/>
+										<input class="form-check-input" name="task_type" type="radio" 
+										       value=1	<?php echo $task_type=='Feature' ? 'checked':'';?> id="task-type-feature"/>
 										<label class="form-check-label" for="task-type-feature">Feature</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" name="task_type" type="radio" value="2"  id="task-type-bug"/>
+										<input class="form-check-input" name="task_type" type="radio" 
+										       value=2 <?php echo $task_type=='Bug' ? 'checked':'';?>  id="task-type-bug"/>
 										<label class="form-check-label" for="task-type-bug">Bug</label>
 									</div>
 								</div>
@@ -80,15 +82,14 @@ $ligne = mysqli_fetch_assoc($result);
 							<div class="mb-3">
 								<label class="form-label">Status</label>
 								<select class="form-select" name="task_status" id="task-status">
-									<option value="">Please select</option>
-									<option value=1>To Do</option>
-									<option value=2>In Progress</option>
-									<option value=3>Done</option>
+									<option value=1  <?php echo $task_status =='To Do' ? 'selected':'';?> >To Do</option>
+									<option value=2  <?php echo $task_status =='In Progress' ? 'selected':'';?> >In Progress</option>
+									<option value=3  <?php echo $task_status =='Done' ? 'selected':'';?> >Done</option>
 								</select>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Date</label>
-								<input type="datetime-local" class="form-control" name="task_date" id="task-date" value=	"<?php echo $task_date; ?>"/>
+								<input type="datetime-local" class="form-control" name="task_date" id="task-date" value="<?php echo $task_date; ?>"/>
 							</div>
 							<div class="mb-0">
 								<label class="form-label">Description</label>
