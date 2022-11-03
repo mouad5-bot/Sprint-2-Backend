@@ -45,7 +45,7 @@ $ligne = mysqli_fetch_assoc($result);
 				<form action="" method="POST" id="form-task">
 					<div class="modal-header">
 						<h5 class="modal-title">Add Task</h5>
-						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+						<a href="index.php" class="btn-close" ></a>
 					</div>
 					<div class="modal-body">
 							<!-- This Input Allows Storing Task Index  -->
@@ -73,18 +73,18 @@ $ligne = mysqli_fetch_assoc($result);
 							<div class="mb-3">
 								<label class="form-label">Priority</label>
 								<select class="form-select" name="task_priority" id="task-priority" >
-									<option value= 1 <?php echo $task_priority=='Low' ? 'selected':'';?> >Low</option>
-									<option value= 2 <?php echo $task_priority=='Medium' ? 'selected':'';?> >Medium</option>
-									<option value= 3 <?php echo $task_priority=='High' ? 'selected':'';?> >High</option>
+									<option value= 1 <?php echo $task_priority=='Low'      ? 'selected':'';?> >Low</option>
+									<option value= 2 <?php echo $task_priority=='Medium'   ? 'selected':'';?> >Medium</option>
+									<option value= 3 <?php echo $task_priority=='High'     ? 'selected':'';?> >High</option>
 									<option value= 4 <?php echo $task_priority=='Critical' ? 'selected':'';?> >Critical</option>
 								</select>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Status</label>
 								<select class="form-select" name="task_status" id="task-status">
-									<option value=1  <?php echo $task_status =='To Do' ? 'selected':'';?> >To Do</option>
+									<option value=1  <?php echo $task_status =='To Do'       ? 'selected':'';?> >To Do</option>
 									<option value=2  <?php echo $task_status =='In Progress' ? 'selected':'';?> >In Progress</option>
-									<option value=3  <?php echo $task_status =='Done' ? 'selected':'';?> >Done</option>
+									<option value=3  <?php echo $task_status =='Done'        ? 'selected':'';?> >Done</option>
 								</select>
 							</div>
 							<div class="mb-3">
@@ -98,7 +98,7 @@ $ligne = mysqli_fetch_assoc($result);
 						
 					</div>
 					<div class="modal-footer">
-						<a href="index.php" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
+						<a href="index.php" class="btn btn-white" >Cancel</a>
 						<button  type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
 						<button  type="submit" name="delete" class="btn btn-danger task-action-btn"  id="task-delete-btn">Delete</button>
 					</div>
@@ -110,7 +110,6 @@ $ligne = mysqli_fetch_assoc($result);
 		//CODE HERE	
 			
 		if(isset($_POST['update'])) {
-			print_r($_POST);
 			$task_title       = $_POST['task_title'];
 			$task_type        = $_POST['task_type'];
 			$task_priority    = $_POST['task_priority'];

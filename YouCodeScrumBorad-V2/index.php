@@ -474,6 +474,8 @@
 	<script src="assets/js/app.min.js"></script>
 	<!-- ================== END core-js ================== -->
 	<script src="scripts.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 	<script>
 		//reloadTasks();
