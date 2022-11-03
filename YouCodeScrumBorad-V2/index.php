@@ -256,7 +256,7 @@
 				<div class="col-xl-4 col-lg-6">
 					<div class="panel panel-inverse">
 						<div class="panel-heading">
-							<h4 class="panel-title">To do (<span id="to-do-tasks-count">0</span>)</h4>
+							<h4 class="panel-title">To do (<span id="to-do-tasks-count"><?=task_count(1)?></span>)</h4>
 							<div class="panel-heading-btn">
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
 								<a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
@@ -407,7 +407,7 @@
 				<form action="scripts.php" method="POST" id="form-task">
 					<div class="modal-header">
 						<h5 class="modal-title">Add Task</h5>
-						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+						<a href="index.php" class="btn-close" data-bs-dismiss="modal"></a>
 					</div>
 					<div class="modal-body">
 							<!-- This Input Allows Storing Task Index  -->
@@ -460,7 +460,7 @@
 						
 					</div>
 					<div class="modal-footer">
-						<a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
+						<a href="index.php" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
 						<button type="submit" name="delete" class="btn btn-danger task-action-btn"  id="task-delete-btn">Delete</a>
 						<button type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
 						<button type="submit" name="save"   class="btn btn-primary task-action-btn" id="task-save-btn">Save</button>

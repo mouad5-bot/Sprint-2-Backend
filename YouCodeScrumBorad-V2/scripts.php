@@ -46,12 +46,16 @@
 
         $req = "INSERT INTO tasks ( task_title, type_id, priority_id, status_id , task_date, task_description)
         VALUES(  '$task_title', '$task_type', '$task_priority', '$task_status', '$task_date', '$task_description')";
-        //var_dump($task_type); tester le type et la valeur de variable task_type
-        $data = mysqli_query($GLOBALS['connection'] ,$req);
+        
+        $data = mysqli_query($GLOBALS['connection'],$req);
 
         $_SESSION['message'] = "Task has been added successfully !";
 		header('location: index.php');
  
         mysqli_close($GLOBALS['connection']);  
     }
+
+    // function count($status) {
+
+    // }
 ?>

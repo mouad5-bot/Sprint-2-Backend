@@ -17,9 +17,9 @@ $result = mysqli_query($GLOBALS['connection'] ,$sql);
 $ligne = mysqli_fetch_assoc($result);
 
 	$task_title 	  = $ligne['task_title'];
-	$task_type		  = (int)$ligne['task_type'];
-	$task_priority	  = (int)$ligne['task_priority'];
-	$task_status	  = (int)$ligne['task_status'];
+	$task_type		  = $ligne['task_type'];
+	$task_priority	  = $ligne['task_priority'];
+	$task_status	  = $ligne['task_status'];
 	$task_date 		  = $ligne['task_date'];
 	$task_description = $ligne['task_description'];
 ?>
@@ -70,21 +70,20 @@ $ligne = mysqli_fetch_assoc($result);
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Priority</label>
-								<select class="form-select"   name="task_priority" id="task-priority" >
-									<option value="">Please select</option>
-									<option value="1">Low</option>
-									<option value="2">Medium</option>
-									<option value="3">High</option>
-									<option value="4">Critical</option>
+								<select class="form-select" name="task_priority" id="task-priority" >
+									<option value= 1 <?php echo $task_priority=='Low' ? 'selected':'';?> >Low</option>
+									<option value= 2 <?php echo $task_priority=='Medium' ? 'selected':'';?> >Medium</option>
+									<option value= 3 <?php echo $task_priority=='High' ? 'selected':'';?> >High</option>
+									<option value= 4 <?php echo $task_priority=='Critical' ? 'selected':'';?> >Critical</option>
 								</select>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Status</label>
 								<select class="form-select" name="task_status" id="task-status">
 									<option value="">Please select</option>
-									<option value="1">To Do</option>
-									<option value="2">In Progress</option>
-									<option value="3">Done</option>
+									<option value=1>To Do</option>
+									<option value=2>In Progress</option>
+									<option value=3>Done</option>
 								</select>
 							</div>
 							<div class="mb-3">
@@ -98,7 +97,7 @@ $ligne = mysqli_fetch_assoc($result);
 						
 					</div>
 					<div class="modal-footer">
-						<a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
+						<a href="index.php" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
 						<button  type="submit" name="update" class="btn btn-warning task-action-btn" id="task-update-btn">Update</a>
 						<button  type="submit" name="delete" class="btn btn-danger task-action-btn"  id="task-delete-btn">Delete</button>
 					</div>
@@ -108,12 +107,13 @@ $ligne = mysqli_fetch_assoc($result);
 <!-- ============================ UPDATE ================================= -->
 	<?php
 		//CODE HERE	
-		$id = $_GET['id'];
+			
 		if(isset($_POST['update'])) {
+			print_r($_POST);
 			$task_title       = $_POST['task_title'];
-			$task_type        = (int)$_POST['task_type'];
-			$task_priority    = (int)$_POST['task_priority'];
-			$task_status      = (int)$_POST['task_status'];
+			$task_type        = $_POST['task_type'];
+			$task_priority    = $_POST['task_priority'];
+			$task_status      = $_POST['task_status'];
 			$task_date        = $_POST['task_date'];
 			$task_description = $_POST['task_description'];
 			//SQL UPDATE
@@ -152,19 +152,7 @@ $ligne = mysqli_fetch_assoc($result);
 	<script src="assets/js/app.min.js"></script>
 	<!-- ================== END core-js ================== -->
 	<script src="scripts.js"></script>
-	<script>
-		//reloadTasks();
-		<?php 
-			if($task_type == "Feature"){
-				?>
-				document.getElementById('task-type-feature').checked=true;
-			<?php }else{?>
-				document.getElementById('task-type-bug').checked=true;
-		<?php }?>
-
-			document.getElementById("task-priority").value =" <?=$ligne['task_priority']?>";
-		
-	</script> 	
+	
 
 </body>
 </html>
