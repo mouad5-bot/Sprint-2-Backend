@@ -414,17 +414,17 @@
 							<input type="hidden" id="task-id">
 							<div class="mb-3">
 								<label class="form-label">Title</label>
-								<input  type="text" class="form-control" name="task_title" id="task-title" />
+								<input  type="text" class="form-control" name="task_title" id="task-title" required/>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Type</label>
 								<div class="ms-3">
 									<div class="form-check mb-1">
-										<input class="form-check-input" name="task_type" type="radio" value="1" id="task-type-feature"/>
+										<input class="form-check-input" name="task_type" type="radio" value="1" id="task-type-feature" required/>
 										<label class="form-check-label" for="task-type-feature">Feature</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" name="task_type" type="radio" value="2" id="task-type-bug"/>
+										<input class="form-check-input" name="task_type" type="radio" value="2" id="task-type-bug" required/>
 										<label class="form-check-label" for="task-type-bug">Bug</label>
 									</div>
 								</div>
@@ -432,8 +432,8 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Priority</label>
-								<select class="form-select"  name="task_priority" id="task-priority">
-									<option value="">Please select</option>
+								<select class="form-select"  name="task_priority" id="task-priority" required>
+									<option selected disabled value="">Please select</option>
 									<option value="1">Low</option>
 									<option value="2">Medium</option>
 									<option value="3">High</option>
@@ -442,8 +442,8 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Status</label>
-								<select class="form-select" name="task_status" id="task-status">
-									<option value="">Please select</option>
+								<select class="form-select" name="task_status" id="task-status" required>
+									<option selected disabled value="">Please select</option>
 									<option value="1">To Do</option>
 									<option value="2">In Progress</option>
 									<option value="3">Done</option>
@@ -451,11 +451,11 @@
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Date</label>
-								<input type="datetime-local" class="form-control" name="task_date" id="task-date"/>
+								<input type="datetime-local" class="form-control" name="task_date" id="task-date" required/>
 							</div>
 							<div class="mb-0">
 								<label class="form-label">Description</label>
-								<textarea class="form-control" rows="10" name="task_description" id="task-description"></textarea>
+								<textarea class="form-control" rows="10" name="task_description" id="task-description" required></textarea>
 							</div>
 						
 					</div>
